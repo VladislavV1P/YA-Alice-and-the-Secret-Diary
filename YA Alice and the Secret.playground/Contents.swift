@@ -7,21 +7,12 @@ var startDate = 0
 var endDate = allDay
 var middleDate = 0
 
-//test data
-let xDay = 1
-//test data
-
 func readGameConfig() -> Int {
     guard
         let input = readLine()?.split(separator: " ").compactMap({ Int(String($0)) }),
         input.count == 1
     else {
-        if xDay > middleDate {
-            return 0
-        } else {
-            return 1
-        }
-        
+        return 0
     }
     return input[0]
 }
@@ -40,8 +31,6 @@ let dayTimePeriodFormatter = DateFormatter()
 dayTimePeriodFormatter.dateFormat = "dd.MM.YYYY"
 var selectedDate = ""
 
-
-
 func selectDay(day: Int) {
     let date = Date(timeIntervalSince1970: TimeInterval(day * secondInDay))
     selectedDate = dayTimePeriodFormatter.string(from: date)
@@ -53,9 +42,6 @@ func middleData(start: Int, end: Int) {
 }
 
 middleData(start: startDate, end: endDate)
-
-//selectDay(day: 1000)
-//selectedDate
 
 func solution() {
     // read game configuration
@@ -72,7 +58,6 @@ func solution() {
         answer = readGameConfig()
         
         while startDate != middleDate {
-            print("start = \(startDate) middleDate = \(middleDate)  end = \(endDate)")
             if answer >= middleNumber {
                 endDate = middleDate
             } else {
@@ -93,4 +78,3 @@ func solution() {
 }
 
 solution()
-
